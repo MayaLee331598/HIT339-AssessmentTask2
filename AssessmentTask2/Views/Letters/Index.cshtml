@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AssessmentTask2.Models.Letter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Views/Letters/LettersIndex.css" rel="stylesheet" />
+
+<h2>Letters</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beginning_Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Signiture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BSB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Account_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Term_Start_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Term_End_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beginning_Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Signiture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BSB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Term_Start_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Term_End_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LessonId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LetterId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LetterId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LetterId })
+        </td>
+    </tr>
+}
+
+</table>

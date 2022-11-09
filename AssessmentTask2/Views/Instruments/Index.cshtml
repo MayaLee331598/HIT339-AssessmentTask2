@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AssessmentTask2.Models.Instrument>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Instruments</h2>
+
+<link href="~/Views/Instruments/InstrumentsIndex.css" rel="stylesheet" />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InstrumentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstrumentFamily)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstrumentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstrumentFamily)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InstrumentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InstrumentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InstrumentId })
+        </td>
+    </tr>
+}
+
+</table>

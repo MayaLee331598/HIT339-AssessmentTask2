@@ -1,0 +1,106 @@
+﻿@model AssessmentTask2.Models.Letter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Letter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beginning_Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beginning_Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Signiture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Signiture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BSB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BSB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term_Start_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term_Start_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Term_End_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Term_End_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LetterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

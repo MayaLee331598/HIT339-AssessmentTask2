@@ -1,0 +1,74 @@
+﻿@model AssessmentTask2.Models.Lesson
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lesson</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration.DurationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration.DurationId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instrument.InstrumentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instrument.InstrumentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Firstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tutor.TutorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tutor.TutorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LessonTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LessonTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LetterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LetterId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LessonId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

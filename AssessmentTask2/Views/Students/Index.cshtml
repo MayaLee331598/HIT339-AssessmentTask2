@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AssessmentTask2.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Manage Students</h2>
+
+<link href="~/Views/Students/StudentsIndex.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+<p>
+    <tr>
+        <th>
+            @Html.ActionLink("Sort By: First Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+</p>
+<p>
+        <th>
+            @Html.ActionLink("Sort By: Age", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th></th>
+    </tr>
+</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentOrGaurdian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParentOrGaurdian)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+
+</table>

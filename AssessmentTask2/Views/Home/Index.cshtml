@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Views/Home/HomeIndex.css" rel="stylesheet" />
+
+<div class="jumbotron">
+    <h1>Music With CDU!</h1>
+    <p class="lead">Welcome to CDU's Music program click below to book a lesson of continue reading to find out more.</p>
+    <h4>@Html.ActionLink("Book Lesson", "Index", "Lessons")</h4>
+</div>
+
+<h2>
+    Welcome!
+</h2>
+<p>
+    THe Center of Youth Music teaches music in a way that is fun, educational and tailored to each students needs and goals.
+</p>
+<p>
+    The CYCM offers music curriculum for students of all ages starting from the "very young" in the "Junior Music Program" right through to the "young at heart" adults in our "Non-Award Programs".
+</p>
+<p>
+    Catering for the beginner to the more advanced student, the CYCM provides instrumental, vocal and theory tuition as well as offering a diverse and exciting range of ensemble programs.
+</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Meet our Tutors</h2>
+        <p>
+            Our Music program provides a wide variety of Tutors for you to choose from speacialising in multiple instruments.
+        </p>
+        <h4>@Html.ActionLink("Learn more", "Index", "Tutors")</h4>
+    </div>
+    <div class="col-md-4">
+        <h2>Check out our available instruments</h2>
+        <p>Any Instrument you can think of? We have it! From Woodwind to percussion we have you sorted.</p>
+        <h4>@Html.ActionLink("Learn more", "Index", "Instruments")</h4>
+    </div>
+    <div class="col-md-4">
+        <h2>Have a look at our pricing</h2>
+        <p>Have a look at the 3 times we have for lessons and the great pricing that comes with them.</p>
+        <h4>@Html.ActionLink("Learn more", "Index", "Durations")</h4>
+    </div>
+</div>
+<br />
+<h3>
+    CYCM Administration hours are as follows
+</h3>
+<p>
+    The CYCM Administration office is located in Orange Building 6.1.07. View it on <a href="https://www.cdu.edu.au/sites/default/files/CASmap12.pdf">Campus Map</a>
+</p>
+<table>
+    <dl class="dl-horizontal">
+        <dt>
+            Monday
+        </dt>
+        <dd>
+            9:30am - 5:30pm
+        </dd>
+        <dt>
+            Tuesday
+        </dt>
+        <dd>
+            9am -5pm
+        </dd>
+        <dt>
+            Wednesday
+        </dt>
+        <dd>
+            9am - 5pm
+        </dd>
+        <dt>
+            Thursday
+        </dt>
+        <dd>
+            9am - 5pm
+        </dd>
+        <dt>
+            Friday
+        </dt>
+        <dd>
+            1pm - 5pm
+        </dd>
+        <dt>
+            Saturday
+        </dt>
+        <dd>
+            8:30am - 1:15pm
+        </dd>
+        <dt>
+            Sunday
+        </dt>
+        <dd>
+            Closed
+        </dd>
+    </dl>
+</table>

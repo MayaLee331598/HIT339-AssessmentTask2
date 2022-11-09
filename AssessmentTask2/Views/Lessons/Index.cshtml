@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AssessmentTask2.Models.Lesson>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Scheduled Lessons</h2>
+
+<link href="~/Views/Lessons/LessonsIndex.css" rel="stylesheet" />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Students", FormMethod.Get))
+{
+    //Search options
+    <b>Search Options: </b> @Html.RadioButton("Option", "Instrument")<text>Instrument</text>@Html.RadioButton("Option", "Tutor")<text>Tutor</text>@Html.RadioButton("Option", "Term")<text>Term</text>@Html.TextBox("Search")
+    <input type="submit" name="submit" value="Search" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration.DurationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instrument.InstrumentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tutor.TutorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LessonTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LetterId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration.DurationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instrument.InstrumentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tutor.TutorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LessonTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LetterId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LessonId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LessonId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LessonId })
+            </td>
+        </tr>
+    }
+
+</table>
