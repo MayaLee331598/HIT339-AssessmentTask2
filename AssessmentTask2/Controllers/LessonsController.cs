@@ -16,10 +16,33 @@ namespace AssessmentTask2.Controllers
         private AssessmentTask2Context db = new AssessmentTask2Context();
 
         // GET: Lessons
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            var lessons = db.Lessons.Include(l => l.Duration).Include(l => l.Instrument).Include(l => l.Student).Include(l => l.Tutor);
-            return View(lessons.ToList());
+            if (option == "Instrument")
+            {
+                return View(db.Lessons.Where(x => x.Instrument.InstrumentName == search || search == null).ToList());
+            }
+            else if (option == "Tutor")
+            {
+                return View(db.Lessons.Where(x => x.Tutor.TutorName == search || search == null).ToList());
+
+            }
+            else if (option == "Term")
+            {
+                return View(db.Lessons.Where(x => x.Letter.Current_Term.Contains(search) || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Lessons.Where(x => x.Student.Firstname.StartsWith(search) || search == null).ToList());
+            }
+        }
+
+        public ActionResult CreateLetter(int[] Selected)
+        {
+            ViewBag.LessonId = new SelectList(db.Lessons, "LessonId", "LessonId");
+            ViewBag.StudentId = new SelectList(db.Students, "StudentId", "FirstName");
+            return View();
+
         }
 
         // GET: Lessons/Details/5
@@ -40,8 +63,9 @@ namespace AssessmentTask2.Controllers
         // GET: Lessons/Create
         public ActionResult Create()
         {
-            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "DurationId");
+            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "TimeTaken");
             ViewBag.InstrumentId = new SelectList(db.Instruments, "InstrumentId", "InstrumentName");
+            ViewBag.LetterId = new SelectList(db.Letters, "LetterId", "LetterId");
             ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Firstname");
             ViewBag.TutorId = new SelectList(db.Tutors, "TutorId", "TutorName");
             return View();
@@ -61,8 +85,9 @@ namespace AssessmentTask2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "DurationId", lesson.DurationId);
+            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "TimeTaken", lesson.DurationId);
             ViewBag.InstrumentId = new SelectList(db.Instruments, "InstrumentId", "InstrumentName", lesson.InstrumentId);
+            ViewBag.LetterId = new SelectList(db.Letters, "LetterId", "LetterId", lesson.LetterId);
             ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Firstname", lesson.StudentId);
             ViewBag.TutorId = new SelectList(db.Tutors, "TutorId", "TutorName", lesson.TutorId);
             return View(lesson);
@@ -80,8 +105,9 @@ namespace AssessmentTask2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "DurationId", lesson.DurationId);
+            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "TimeTaken", lesson.DurationId);
             ViewBag.InstrumentId = new SelectList(db.Instruments, "InstrumentId", "InstrumentName", lesson.InstrumentId);
+            ViewBag.LetterId = new SelectList(db.Letters, "LetterId", "LetterId", lesson.LetterId);
             ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Firstname", lesson.StudentId);
             ViewBag.TutorId = new SelectList(db.Tutors, "TutorId", "TutorName", lesson.TutorId);
             return View(lesson);
@@ -100,8 +126,9 @@ namespace AssessmentTask2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "DurationId", lesson.DurationId);
+            ViewBag.DurationId = new SelectList(db.Durations, "DurationId", "TimeTaken", lesson.DurationId);
             ViewBag.InstrumentId = new SelectList(db.Instruments, "InstrumentId", "InstrumentName", lesson.InstrumentId);
+            ViewBag.LetterId = new SelectList(db.Letters, "LetterId", "LetterId", lesson.LetterId);
             ViewBag.StudentId = new SelectList(db.Students, "StudentId", "Firstname", lesson.StudentId);
             ViewBag.TutorId = new SelectList(db.Tutors, "TutorId", "TutorName", lesson.TutorId);
             return View(lesson);

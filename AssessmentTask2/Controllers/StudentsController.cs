@@ -16,9 +16,33 @@ namespace AssessmentTask2.Controllers
         private AssessmentTask2Context db = new AssessmentTask2Context();
 
         // GET: Students
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            return View(db.Students.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date_desc" : "Date";
+            var students = from s in db.Students
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.Firstname.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Lastname.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    students = students.OrderByDescending(s => s.Firstname);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.DoB);
+                    break;
+                case "Date_desc":
+                    students = students.OrderByDescending(s => s.DoB);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.Firstname);
+                    break;
+            }
+            return View(students.ToList());
         }
 
         // GET: Students/Details/5
